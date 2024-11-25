@@ -1,7 +1,6 @@
-# CHOWDECK
+# ETAP-BACKEND
 
-This project is a small RESTful API for a restaurant management product called
-Kitchen
+This project is a small RESTful API for a test 
 
 ## Frameworks and Technologies
 
@@ -29,10 +28,6 @@ Install Postgress DB on your machine
 
 ```bash
 npx prisma migrate dev --name init
-```
-
-```bash
-npm run seed
 ```
 
 
