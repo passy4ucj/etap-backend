@@ -10,6 +10,7 @@ import {
   getUserProgressBySubject,
   getRankingBySubject,
   updateProgress,
+  getAllProgress,
 } from "../services/progress-service";
 
 // @desc    Create a new progress entry
@@ -74,6 +75,15 @@ export const getRankingBySubjectController = async (req: Request, res: Response)
 
   return successResponse(res, StatusCodes.OK, ranking);
 };
+
+// @desc    Get all progress
+// @route   GET /api/v2/progress
+export const getAllProgressController = async (_req: Request, res: Response) => {
+  const progress = await getAllProgress();
+
+  return successResponse(res, StatusCodes.OK, progress);
+};
+
 
 // @desc    Delete a progress entry
 // @route   DELETE /api/v2/progress/:id

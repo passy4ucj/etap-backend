@@ -6,6 +6,7 @@ import {
   getUserProgressBySubjectController,
   getRankingBySubjectController,
   deleteProgressController,
+  getAllProgressController,
 } from "../controllers/progress-controller";
 
 import {
@@ -21,7 +22,8 @@ router.use(currentUserMiddleware, requireAuthMiddleware);
 // Create progress
 router
   .route("/")
-  .post(validateRequestMiddleware, createProgressController);
+  .post(validateRequestMiddleware, createProgressController)
+  .get(getAllProgressController);
 
 // Get progress by ID
 router.route("/:id").get(getProgressByIdController);

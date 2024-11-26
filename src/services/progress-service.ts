@@ -46,6 +46,14 @@ export const getRankingBySubject = async (subjectId: string) => {
   });
 };
 
+export const getAllProgress = async (
+  query?: Partial<ProgressData>
+) => {
+  return await prisma.progress.findMany({
+    where: { ...query },
+  });
+};
+
 export const deleteProgress = async (progressId: string): Promise<ReturnedProgress> => {
   return await prisma.progress.delete({
     where: { id: progressId },
