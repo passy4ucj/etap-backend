@@ -26,7 +26,6 @@ export const adminRegisterUserController = async (req: Request, res: Response) =
     name,
     email,
     password,
-    role,
   });
 
   delete data.password

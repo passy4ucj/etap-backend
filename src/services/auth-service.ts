@@ -4,7 +4,7 @@ import { User } from "@prisma/client";
 
 export type UserAccount = Pick<
     User,
-    "name" | "role" | "email" | "password"
+    "name" | "email" | "password"
     >;
 
 // excluded password types
@@ -14,7 +14,7 @@ Omit<User, "password">;
 
 export const createUser = async (data: UserAccount): Promise<ReturnedUser> => {
     const user: ReturnedUser = await prisma.user.create({
-        data: { ...data },
+        data: { ...data, role: 'ADMIN' },
     });
     delete user.password;
 

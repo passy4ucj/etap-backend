@@ -6,15 +6,18 @@ export type TopicData = Pick<Topic, "subjectId" | "title" | "description" | "vid
 
 export type ReturnedTopic = Topic;
 
-export const createTopic = async (data: TopicData): Promise<ReturnedTopic> => {
+export const createTopic = async (data: TopicData) => {
   return await prisma.topic.create({
-    data,
+    data: { ...data },
   });
 };
 
-export const findTopicById = async (topicId: string): Promise<ReturnedTopic | null> => {
+export const findTopicById = async (topicId: string) => {
   return await prisma.topic.findUnique({
     where: { id: topicId },
+    include: {
+      subject: true,
+    }
   });
 };
 
@@ -34,12 +37,19 @@ export const deleteTopic = async (topicId: string): Promise<ReturnedTopic> => {
   });
 };
 
-export const getTopicsBySubject = async (subjectId: string): Promise<ReturnedTopic[]> => {
+export const getTopicsBySubject = async (subjectId: string) => {
   return await prisma.topic.findMany({
     where: { subjectId },
+    include: {
+      subject: true,
+    }
   });
 };
 
-export const getAllTopics = async (): Promise<ReturnedTopic[]> => {
-  return await prisma.topic.findMany();
+export const getAllTopics = async () => {
+  return await prisma.topic.findMany({
+    include: {
+      subject: true,
+    }
+  });
 };
