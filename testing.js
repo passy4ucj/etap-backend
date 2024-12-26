@@ -129,26 +129,56 @@
 // console.log('RESULT', isValid("()"))
 
 // Merge Two Sorted Lists
-function ListNode(val = 0, next = null) {
-    this.val = val;
-    this.next = next;
-}
+// function ListNode(val = 0, next = null) {
+//     this.val = val;
+//     this.next = next;
+// }
 
-const mergeTwoLists = (list1, list2) => {
-    if(list1 === null) return list2;
-    if(list2 === null) return list1;
+// const mergeTwoLists = (list1, list2) => {
+//     if(list1 === null) return list2;
+//     if(list2 === null) return list1;
 
-    if(list1.val <= list2.val) {
-        list1.next = mergeTwoLists(list1.next, list2);
-        return list1;
-    } else {
-        list2.next = mergeTwoLists(list1, list2.next)
-        return list2
+//     if(list1.val <= list2.val) {
+//         list1.next = mergeTwoLists(list1.next, list2);
+//         return list1;
+//     } else {
+//         list2.next = mergeTwoLists(list1, list2.next)
+//         return list2
+//     }
+// }
+
+// const list1 = new ListNode(1, new ListNode(2, new ListNode(4)))
+// const list2 = new ListNode(1, new ListNode(3, new ListNode(4)))
+// const mergedList = mergeTwoLists(list1, list2)
+
+// console.log('RESULT', mergedList);
+
+
+// Remove Duplicates 
+// const removeDuplicates = (nums) => {
+//     let i = 0;
+//     for (let j = 1; j < nums.length; j++) {
+//         if(nums[j] !== nums[i]) {
+//             i++;
+//             nums[i] = nums[j]
+//         }
+//     }
+//     return i + 1;
+// }
+
+// console.log('RESULT', removeDuplicates([0,0,1,1,1,2,2,3,3,4]));
+
+
+// Remove Element 
+const removeElement = (nums, val) => {
+    let i = 0;
+    for (let j = 0; j < nums.length; j++) {
+        if(nums[j] !== val) {
+            nums[i] = nums[j];
+            i++;
+        }
     }
+    return i;
 }
 
-const list1 = new ListNode(1, new ListNode(2, new ListNode(4)))
-const list2 = new ListNode(1, new ListNode(3, new ListNode(4)))
-const mergedList = mergeTwoLists(list1, list2)
-
-console.log('RESULT', mergedList);
+console.log('RESULT', removeElement([3,2,2,3], 3));
